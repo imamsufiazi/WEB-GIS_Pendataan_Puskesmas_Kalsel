@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="latin1" collation="latin1_swedish_ci">tb_gis</database>
+</source>
+<canvas zoom="110">
+<tables>
+<table name="user" view="standard">
+<left>111</left>
+<top>101</top>
+<width>388</width>
+<height>241</height>
+<sql_create_table>CREATE TABLE `user` (
+  `id_user` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(128) DEFAULT NULL,
+  `pwd` varchar(256) DEFAULT NULL,
+  `role` enum('Admin','Pegawai') DEFAULT NULL,
+  `nama_depan` varchar(128) DEFAULT NULL,
+  `nama_belakang` varchar(128) DEFAULT NULL,
+  `tanggal_register` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id_user`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="login" view="standard">
+<left>547</left>
+<top>128</top>
+<width>286</width>
+<height>198</height>
+<sql_create_table>CREATE TABLE `login` (
+  `id_login` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) DEFAULT NULL,
+  `tanggal_login` varchar(128) DEFAULT NULL,
+  `latitude_login` varchar(128) DEFAULT NULL,
+  `longitude_login` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id_login`),
+  KEY `id_user` (`id_user`),
+  CONSTRAINT `login_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>
